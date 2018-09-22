@@ -9,6 +9,6 @@ namespace EchartsInAspnet.Ajax.Models
     {
         public string name { get; set; }
         public string type { get; set; }
-        public List<int> data { get; set; }
+        public List<decimal> data { get; set; }
     }
 }

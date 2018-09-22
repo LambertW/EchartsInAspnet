@@ -24,181 +24,73 @@
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 
-        //指定图表的配置项和数据
-        var titles = ['气温变化', '空气质量指数', 'C', 'D'];
-        var dataAll = [
-            [
-                [10.0, 8.04],
-                [8.0, 6.95],
-                [13.0, 7.58],
-                [9.0, 8.81],
-                [11.0, 8.33],
-                [14.0, 9.96],
-                [6.0, 7.24],
-                [4.0, 4.26],
-                [12.0, 10.84],
-                [7.0, 4.82],
-                [5.0, 5.68]
-            ],
-            [
-                [10.0, 9.14],
-                [8.0, 8.14],
-                [13.0, 8.74],
-                [9.0, 8.77],
-                [11.0, 9.26],
-                [14.0, 8.10],
-                [6.0, 6.13],
-                [4.0, 3.10],
-                [12.0, 9.13],
-                [7.0, 7.26],
-                [5.0, 4.74]
-            ],
-            [
-                [10.0, 7.46],
-                [8.0, 6.77],
-                [13.0, 12.74],
-                [9.0, 7.11],
-                [11.0, 7.81],
-                [14.0, 8.84],
-                [6.0, 6.08],
-                [4.0, 5.39],
-                [12.0, 8.15],
-                [7.0, 6.42],
-                [5.0, 5.73]
-            ],
-            [
-                [8.0, 6.58],
-                [8.0, 5.76],
-                [8.0, 7.71],
-                [8.0, 8.84],
-                [8.0, 8.47],
-                [8.0, 7.04],
-                [8.0, 5.25],
-                [19.0, 12.50],
-                [8.0, 5.56],
-                [8.0, 7.91],
-                [8.0, 6.89]
-            ]
-        ];
-        var markLineOpt = {
-            animation: false,
-            //图形上的文本标签
-            label: {
-                normal: {
-                    formatter: 'y=0.5*x+3',
-                    textStyle: {
-                        align: 'right'
-                    }
-                }
-            },
-            lineStyle: {
-                normal: {
-                    type: 'solid'
-                }
-            },
-            tooltip: {
-                formatter: 'y=0.5*x+3'
-            },
-            data: [[{
-                //起点或终点的坐标
-                coord: [0, 3],
-                symbol: 'none'
-            }, {
-                coord: [20, 13],
-                symbol: 'none'
-            }]]
-        }
-        var option = {
-            //分别设置标题居中主要代码
-            title: [
-                {
-                    text: titles[0],
-                    left: '25%',
-                    top: '1%',
-                    textAlign: 'center'
-                },
-                {
-                    text: titles[1],
-                    left: '73%',
-                    top: '1%',
-                    textAlign: 'center'
-                },
-                {
-                    text: titles[2],
-                    left: '25%',
-                    top: '50%',
-                    textAlign: 'center'
-                },
-                {
-                    text: titles[3],
-                    left: '73%',
-                    top: '50%',
-                    textAlign: 'center'
-                }
-
-            ],
-            grid: [
-                { x: '7%', y: '7%', width: '38%', height: '38%' },
-                { x2: '7%', y: '7%', width: '38%', height: '38%' },
-                { x: '7%', y2: '7%', width: '38%', height: '38%' },
-                { x2: '7%', y2: '7%', width: '38%', height: '38%' }
-            ],
-            tooltip: {
-                formatter: 'Group {a}:({c})'
-            },
-            xAxis: [
-                { gridIndex: 0, min: 0, max: 20 },
-                { gridIndex: 1, min: 0, max: 20 },
-                { gridIndex: 2, min: 0, max: 20 },
-                { gridIndex: 3, min: 0, max: 20 }
-            ],
-            yAxis: [
-                { gridIndex: 0, min: 0, max: 15 },
-                { gridIndex: 1, min: 0, max: 15 },
-                { gridIndex: 2, min: 0, max: 15 },
-                { gridIndex: 3, min: 0, max: 15 }
-            ],
-            series: [
-                {
-                    name: 'I',
-                    type: 'scatter',
-                    xAxisIndex: 0,
-                    yAxisIndex: 0,
-                    data: dataAll[0],
-                    markLine: markLineOpt
-                },
-                {
-                    name: 'II',
-                    type: 'scatter',
-                    xAxisIndex: 1,
-                    yAxisIndex: 1,
-                    data: dataAll[1],
-                    markLine: markLineOpt
-                },
-                {
-                    name: 'III',
-                    type: 'scatter',
-                    xAxisIndex: 2,
-                    yAxisIndex: 2,
-                    data: dataAll[2],
-                    markLine: markLineOpt
-                },
-                {
-                    name: 'IV',
-                    type: 'scatter',
-                    xAxisIndex: 3,
-                    yAxisIndex: 3,
-                    data: dataAll[3],
-                    markLine: markLineOpt
-                }
-            ]
-        };
-
+        myChart.showLoading({
+            text: "加载中...请等待"
+        });
+        myChart.hideLoading();
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        myChart.setOption({
+            title: {
+                text: '本月每天订单数量统计（单）[周日除外]',
+                subtext: '数据来自WMS统计'
+            },
+            tooltip: {
+                trigger: 'item',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: [],
+                x: 'right',
+            },
+            toolbox: {
+                show: true, orient: 'vertical',
+                y: 'center',
+                feature: {
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            calculable: true,
+            xAxis: { data: [], orient: 'vertical' },
+            yAxis: { type: 'value' },
+            series: []
+        });
 
-            window.addEventListener("resize", function () {
-                myChart.resize();
+        setInterval(refreshData, 1000);
+        function refreshData() {
+            // 通过Ajax获取数据
+            $.ajax({
+                type: "post",
+                async: true, //同步执行
+                url: "@Url.Action("GetData", "Echarts")",
+                dataType: "json", //返回数据形式为json
+                success: function (result) {
+                    if (result) {
+                        myChart.hideLoading();
+                        //将返回的category和series对象赋值给options对象内的category和series
+                        myChart.setOption({
+                            xAxis: {
+                                data: result.category,
+                            },
+                            series: result.series,
+                            legend: {
+                                data: result.legend
+                            }
+                        });
+                    }
+                },
+                error: function (errorMsg) {
+                    alert("每月订单数量统计数据请求失败。");
+                    myChart.hideLoading();
+                }
             });
+        }
+
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        });
     </script>
 }
