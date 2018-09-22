@@ -1,4 +1,5 @@
 ﻿using EchartsInAspnet.Ajax.Models;
+using EchartsInAspnet.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace EchartsInAspnet.Ajax.Controllers
 {
     public class EchartsController : Controller
     {
+        private readonly IMarketRepository _marketRepository;
+
+
         // GET: Echarts
         public ActionResult Index()
         {
@@ -67,5 +71,6 @@ namespace EchartsInAspnet.Ajax.Controllers
 
             return new JsonResult() { Data = newObj };
         }
+
     }
 }

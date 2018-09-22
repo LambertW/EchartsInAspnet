@@ -1,0 +1,1 @@
+VS2017目录地址：\Microsoft Visual Studio\2017\Enterprise\Xml\Schemas

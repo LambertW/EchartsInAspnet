@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SmartSqlMap Scope="Market" xmlns="http://SmartSql.net/schemas/SmartSqlMap.xsd">
+  <Statements>
+    <Statement Id="QueryParams">
+      <Where>
+        <IsNotEmpty Prepend="And" Property="code">
+          T.code=?code
+        </IsNotEmpty>
+      </Where>
+    </Statement>
+    <!--新增-->
+    <Statement Id="Insert">
+      INSERT INTO tbl_market
+      (date
+      ,open
+      ,close
+      ,high
+      ,low
+      ,volume
+      ,code
+      )
+      VALUES
+      (?date
+      ,?open
+      ,?close
+      ,?high
+      ,?low
+      ,?volume
+      ,?code)
+      ;Select Last_Insert_Id();
+    </Statement>
+    <!--删除-->
+    <Statement Id="Delete">
+      Delete FROM  tbl_market
+      Where Id=?Id
+    </Statement>
+    <!--更新-->
+    <Statement Id="Update">
+      UPDATE tbl_market
+      <Set>
+        <IsProperty Prepend="," Property="date">
+          date = ?date
+        </IsProperty>
+        <IsProperty Prepend="," Property="open">
+          open = ?open
+        </IsProperty>
+        <IsProperty Prepend="," Property="close">
+          close = ?close
+        </IsProperty>
+        <IsProperty Prepend="," Property="high">
+          high = ?high
+        </IsProperty>
+        <IsProperty Prepend="," Property="low">
+          low = ?low
+        </IsProperty>
+        <IsProperty Prepend="," Property="volume">
+          volume = ?volume
+        </IsProperty>
+        <IsProperty Prepend="," Property="code">
+          code = ?code
+        </IsProperty>
+      </Set>
+      Where Id=?Id
+    </Statement>
+    <!--获取数据列-->
+    <Statement Id="Query">
+      SELECT T.* From tbl_market T
+      <Include RefId="QueryParams"/>
+      <Switch Prepend="Order By" Property="OrderBy">
+        <Default>
+          T.Id Desc
+        </Default>
+      </Switch>
+      <IsNotEmpty Prepend="Limit" Property="Taken">?Taken</IsNotEmpty>
+    </Statement>
+    <!--获取分页数据-->
+    <Statement Id="QueryByPage">
+      Select T.*
+      From tbl_market T
+      <Include RefId="QueryParams"/>
+      <Switch Prepend="Order By" Property="OrderBy">
+        <Default>
+          T.Id Desc
+        </Default>
+      </Switch>
+      Limit ?Offset,?PageSize
+    </Statement>
+    <!--获取记录数-->
+    <Statement Id="GetRecord">
+      Select Count(1) From tbl_market T
+      <Include RefId="QueryParams"/>
+    </Statement>
+    <!--获取表映射实体-->
+    <Statement Id="GetEntity">
+      Select T.* From tbl_market T
+      <Where>
+        <IsNotEmpty Prepend="And" Property="Id">
+          T.Id=?Id
+        </IsNotEmpty>
+      </Where>
+      Limit 1
+    </Statement>
+    <!--是否存在该记录-->
+    <Statement Id="IsExist">
+      Select Count(*) From tbl_market T
+      <Include RefId="QueryParams"/>
+    </Statement>
+  </Statements>
+</SmartSqlMap>
