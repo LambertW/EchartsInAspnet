@@ -17,8 +17,8 @@ namespace EchartsInAspnet.Ajax.Models
             {
                 var temp = new DOC_Order_Header
                 {
-                    OrderTime = DateTime.Now.AddDays(-random.Next(100)),
-                    TotalPrice = (decimal)random.NextDouble() * 200
+                    OrderTime = DateTime.Now.AddHours(-random.Next(100)),
+                    TotalPrice = 2000 + (decimal)random.NextDouble() * 600
                 };
                 DOC_Order_Header.Add(temp);
             }
@@ -27,10 +27,11 @@ namespace EchartsInAspnet.Ajax.Models
         public static void AddData()
         {
             Random random = new Random();
+            var latest = DOC_Order_Header.OrderByDescending(t => t.OrderTime).First();
             var temp = new DOC_Order_Header
             {
                 OrderTime = DateTime.Now,
-                TotalPrice = (decimal)random.NextDouble() * 200
+                TotalPrice = (random.Next() % 2) == 0 ? latest.TotalPrice + random.Next(20) : latest.TotalPrice - random.Next(20)
             };
             DOC_Order_Header.Add(temp);
         }

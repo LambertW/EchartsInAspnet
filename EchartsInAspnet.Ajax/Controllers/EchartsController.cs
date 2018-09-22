@@ -18,8 +18,8 @@ namespace EchartsInAspnet.Ajax.Controllers
         [HttpPost]
         public ActionResult GetData()
         {
-            DateTime startMonth = new DateTime(2018, 01, 01);
-            DateTime endMonth = new DateTime(2018, 10, 01);
+            DateTime startMonth = DateTime.Now.AddDays(-5);
+            DateTime endMonth = DateTime.Now;
             //图表的category是字符串数组形式显示
             List<string> categoryList = new List<string>();//{"周一","周二", "周三", "周四", "周五","周六"};
                                                            //图表的series数据为一个对象数组 需定义一个series的类
