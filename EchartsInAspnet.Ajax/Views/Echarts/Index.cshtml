@@ -31,7 +31,7 @@
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption({
             title: {
-                text: '本月每天订单数量统计（单）[周日除外]',
+                text: '股票数据',
                 subtext: '数据来自WMS统计'
             },
             tooltip: {
@@ -59,13 +59,13 @@
             series: []
         });
 
-        setInterval(refreshData, 1000);
+        setInterval(refreshData, 5000);
         function refreshData() {
             // 通过Ajax获取数据
             $.ajax({
                 type: "post",
                 async: true, //同步执行
-                url: "@Url.Action("GetData", "Echarts")",
+                url: "@Url.Action("GetStockData", "Echarts")" + "?code=600000&begin=2018-09-13&end=2018-09-22",
                 dataType: "json", //返回数据形式为json
                 success: function (result) {
                     if (result) {
