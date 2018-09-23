@@ -11,7 +11,7 @@ codes = ['600000', '600010', '600015', '600016', '600018', '600028', '600030', '
 #df.to_csv('浦发银行近一年半的前复权日线行情.csv')
 for code in codes:
     df = ts.get_k_data('600000', ktype='5')
-    df.to_csv('浦发银行近期5分钟行情.csv', index=False, mode='a')
+    df.to_csv('浦发银行近期5分钟行情.csv', index=False, mode='a', )
 
 
 # df.to_sql()

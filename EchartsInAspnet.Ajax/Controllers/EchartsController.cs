@@ -87,8 +87,8 @@ namespace EchartsInAspnet.Ajax.Controllers
             //Echarts图表需要设置legend内的data数组为series的name集合这里需要定义一个legend数组
             List<string> legendList = new List<string>();
             //设置legend数组
-            legendList.Add(code = code + "开盘价"); //这里的名称必须和series类里面的name保持一致
-            legendList.Add(code = code + "成交量");
+            legendList.Add(code + "开盘价"); //这里的名称必须和series类里面的name保持一致
+            legendList.Add(code + "成交量");
 
             //定义一个Series对象
             Series seriesObj = new Series
