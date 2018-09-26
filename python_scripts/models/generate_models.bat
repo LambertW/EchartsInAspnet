@@ -1,0 +1,1 @@
+sqlacodegen --outfile=models.py mssql+pymssql://sa:wgq!123456@127.0.0.1/tusharedb?charset=utf8
