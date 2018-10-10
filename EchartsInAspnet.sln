@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchartsInAspnet.Entities", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchartsInAspnet.Repository", "EchartsInAspnet.Repository\EchartsInAspnet.Repository.csproj", "{9E31F363-0FDF-4409-A4A3-F782181DED7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchartsInAspnet.WindService", "EchartsInAspnet.WindService\EchartsInAspnet.WindService.csproj", "{F35C9B08-A2D5-4ABA-954E-F3EDB8BD1A3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9E31F363-0FDF-4409-A4A3-F782181DED7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E31F363-0FDF-4409-A4A3-F782181DED7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E31F363-0FDF-4409-A4A3-F782181DED7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35C9B08-A2D5-4ABA-954E-F3EDB8BD1A3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35C9B08-A2D5-4ABA-954E-F3EDB8BD1A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35C9B08-A2D5-4ABA-954E-F3EDB8BD1A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35C9B08-A2D5-4ABA-954E-F3EDB8BD1A3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
